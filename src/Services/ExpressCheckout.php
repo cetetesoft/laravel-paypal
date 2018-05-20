@@ -143,6 +143,13 @@ class ExpressCheckout
             'LOCALE'                         => $this->locale,
         ]);
 
+        // "Sole" or "Mark"
+        if(!empty($data['solution_type']))
+          $this->post['SOLUTIONTYPE']=$data['solution_type'];
+        // "Billing" or "Login"
+        if(!empty($data['landing_page']))
+          $this->post['LANDINGPAGE']=$data['landing_page'];
+
         $this->setShippingAmount($data);
 
         $this->setExpressCheckoutRecurringPaymentConfig($data, $subscription);
